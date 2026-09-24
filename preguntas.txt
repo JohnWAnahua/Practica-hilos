@@ -1,0 +1,8 @@
+1.Al comparar el rendimiento de un programa multihilo con un monolítico, ¿qué diferencias observaste en el tiempo de ejecución? ¿Cómo influye la gestión adecuada de hilos en el rendimiento general del programa?
+Se observó que el tiempo aumentó al utilizar más hilos: 1 hilo = 0.000589 s, 5 hilos = 0.001652 s y 10 hilos = 0.001993 s  y esto se debe al costo de crear y coordinar los hilos. 
+2.¿Qué funciones de la librería pthreads utilizaste en tu implementación? Explica brevemente la finalidad de al menos tres de estas funciones y su importancia en la gestión de hilos.
+Se utilizaron pthread_create() para crear hilos, pthread_join() para esperar su finalización y pthread_mutex_lock() / pthread_mutex_unlock() para controlar el acceso a la sección crítica. 
+3.¿Cómo se comportó el programa al aumentar el número de hilos? ¿Observaste algún límite en el que el rendimiento no mejoró o incluso disminuyó? Explica por qué esto puede ocurrir en un entorno multihilo.
+Al aumentar de 1 a 5 y 10 hilos, el tiempo aumentó y esto ocurre cuando el costo de administrar los hilos y la sincronización mediante el mutex. 
+4.Durante la ejecución, ¿observaste alguna condición de carrera o comportamiento inesperado? Si es así, ¿cómo impactó esto en los resultados obtenidos y qué medidas podrían tomarse para prevenirlo?
+No se observaron errores ni comportamientos inesperados y el uso de pthread_mutex_lock() y pthread_mutex_unlock() ayudó a evitar conflictos entre los hilos. 
